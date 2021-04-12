@@ -35,6 +35,7 @@ urlpatterns = [
 1. makemigration `python3 manage.py makemigration`
 1. migrate `python3 manage.py migrate`
 1. create super user `python3 manage.py createsuperuser`
+1. create product app `python manage.py startapp product`
 
 ## Vue Side
 
