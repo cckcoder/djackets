@@ -40,6 +40,9 @@ urlpatterns = [
 
 1. Install and setup (Vue)
    `npm install -g @vue/cli`
+
+   1. create project with vue `vue create djackets_vue`
+
 1. Include Font Awesome
 1. Set up the base template
 1. Create django app and models for products
