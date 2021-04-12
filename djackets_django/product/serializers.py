@@ -1,9 +1,8 @@
-from django.db.models import fields
 from rest_framework import serializers
 from .models import Category, Product
 
 
-class ProductSerializer(serializers.ManyRelatedField):
+class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = (
