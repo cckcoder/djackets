@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'Product',
   data() {
@@ -42,6 +43,15 @@ export default {
     getProduct() {
       const category_slug = this.$route.params.category_slug
       const product_slug = this.$route.params.product_slug
+
+      axios
+        .get(`/api/v1/products/${category_slug}/${product_slug}`)
+        .then(response => {
+          this.product = response.data
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
   }
 
