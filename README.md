@@ -54,3 +54,6 @@ urlpatterns = [
    1. Create vue page for showing product
    1. Add link to detail page
 1. Setup opp Vuex / State
+
+1. tools
+   1. `npm install bulma-toast`
