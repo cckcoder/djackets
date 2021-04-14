@@ -33,7 +33,7 @@
       </div>
     </nav>
 
-    <div 
+    <div
       :class="{'is-loading': $store.state.isLoading }"
       class="is-loading-bar has-text-centered"
     >
