@@ -71,6 +71,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data() {
     return {
@@ -83,8 +85,21 @@ export default {
   beforeCreate() {
     this.$store.commit('initializeStore')
   },
+  created(){
+    this.initializeToken()
+  },
   mounted() {
     this.cart = this.$store.state.cart
+  },
+  methods: {
+    initializeToken() {
+      const token = this.$store.state.token
+      if (token) {
+        axios.defaults.headers.common['Authorization'] = "Token " + token
+      } else {
+        axios.defaults.headers.common['Authorization'] = ""
+      }
+    },
   },
   computed: {
     cartTotalLength() {
