@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
+import store from "../store";
+
 import Home from "../views/Home.vue";
 import Product from "../views/Product.vue";
 import Category from "../views/Category.vue";
@@ -7,7 +9,7 @@ import Cart from "../views/Cart.vue";
 import SignUp from "../views/SignUp.vue";
 import LogIn from "../views/LogIn.vue";
 import MyAccount from "../views/MyAccount.vue";
-import store from "../store";
+import CheckOut from "../views/CheckOut.vue";
 
 const routes = [
   {
@@ -38,6 +40,14 @@ const routes = [
     path: "/my-account",
     name: "MyAccount",
     component: MyAccount,
+    meta: {
+      requireLogin: true,
+    },
+  },
+  {
+    path: "/cart/checkout",
+    name: "CheckOut",
+    component: CheckOut,
     meta: {
       requireLogin: true,
     },
