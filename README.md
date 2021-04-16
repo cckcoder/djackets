@@ -57,3 +57,7 @@ urlpatterns = [
 
 1. tools
    1. `npm install bulma-toast`
+
+# Reference
+
+https://github.com/SteinOveHelset/djackets_vue

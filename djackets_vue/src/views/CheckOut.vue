@@ -171,7 +171,7 @@ export default {
             }
             if (!this.errors.length) {
                 this.$store.commit('setIsLoading', true)
-                this.stripe.createToken(this.card).then(result => {                    
+                this.stripe.createToken(this.card).then(result => {
                     if (result.error) {
                         this.$store.commit('setIsLoading', false)
                         this.errors.push('Something went wrong with Stripe. Please try again')
