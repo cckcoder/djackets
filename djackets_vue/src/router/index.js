@@ -10,6 +10,7 @@ import SignUp from "../views/SignUp.vue";
 import LogIn from "../views/LogIn.vue";
 import MyAccount from "../views/MyAccount.vue";
 import CheckOut from "../views/CheckOut.vue";
+import Success from "../views/Success.vue";
 
 const routes = [
   {
@@ -51,6 +52,11 @@ const routes = [
     meta: {
       requireLogin: true,
     },
+  },
+  {
+    path: "/cart/success",
+    name: "Success",
+    component: Success,
   },
   {
     path: "/sign-up",
