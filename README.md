@@ -61,3 +61,26 @@ urlpatterns = [
 # Reference
 
 https://github.com/SteinOveHelset/djackets_vue
+
+# Server Setup (DigitalOcean)
+
+1. `sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx`
+1. `sudo apt install certbot python3-certbot-nginx`
+1. setup postgresql
+   1. `sudo -u postgres psql`
+   1. create database `CREATE DATABASE djackets;`
+   1. create user `CREATE USER djacketsuser WITH PASSWORD 'djacketspassword';`
+   1. set encoding to utf8 `ALTER ROLE djacketsuser SET client_encoding TO 'utf8';`
+   1. set up grant for user `GRANT ALL PRIVILEGES ON DATABASE djackets TO djacketsuser;`
+   1. quit pgsql shell `\q`
+1. setup python env
+   1. `sudo -H pip3 install --upgrade pip`
+   1. `sudo -H pip3 install virtualenv`
+1. create project directory
+   1. `mkdir -p /webapps/djackets`
+1. create user group
+   1. `sudo groupadd --system webapps`
+1. add user
+   1. `sudo useradd --system --gid webapps --shell /bin/bash --home /webapps/djackets djackets`
+1. install pgsql python lib
+   1. `pip install psycopg2-binary`
