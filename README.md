@@ -84,3 +84,6 @@ https://github.com/SteinOveHelset/djackets_vue
    1. `sudo useradd --system --gid webapps --shell /bin/bash --home /webapps/djackets djackets`
 1. install pgsql python lib
    1. `pip install psycopg2-binary`
+1. set permission `chown -R djackets:webapps .`
+1. separate setting and manage for production
+1. install gunicorn `pip install gunicorn`
