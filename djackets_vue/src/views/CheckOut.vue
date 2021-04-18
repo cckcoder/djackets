@@ -141,6 +141,13 @@ export default {
     mounted() {
         document.title = 'Checkout | Djackets'
         this.cart = this.$store.state.cart
+
+        if(this.cartTotalLength > 0) {
+            this.stripe = Stripe('pk_test_51Ih3abLrydoSDKK6mZ8NDQz3pIv8kFqN4mgtZsUW1kDdY7UkQzZSaeP5KmAeVxDYSayNuRubUfQU0x7mJFq4Gyfs00jacy1Y4R')
+            const elements = this.stripe.elements();
+            this.card = elements.create('card', { hidePostalCode: true })
+            this.card.mount('#card-element')
+        }
     },
     methods: {
         getItemTotal(item) {
@@ -210,7 +217,7 @@ export default {
             }
 
             await axios
-                .post('/api/v1/checkout', data)
+                .post('/api/v1/checkout/', data)
                 .then(response => {
                     this.$store.commit('clearCart')
                     this.$router.push('/cart/success')

@@ -18,6 +18,7 @@ class Order(models.Model):
         max_digits=8, decimal_places=2, blank=True,
         null=True
     )
+    stripe_token = models.CharField(max_length=100)
 
     class Meta:
         ordering = ['-created_at']
