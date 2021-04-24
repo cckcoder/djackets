@@ -87,3 +87,54 @@ https://github.com/SteinOveHelset/djackets_vue
 1. set permission `chown -R djackets:webapps .`
 1. separate setting and manage for production
 1. install gunicorn `pip install gunicorn`
+1. config gunicorn
+
+   1. `vi env/bin/gunicorn_start`
+   1. `bash
+      #!/bin/sh
+
+      NAME='djackets_django'
+      DJANGODIR=/webapps/djackets/djackets_django
+      SOCKFILE=/webapps/djackets/env/run/gunicorn.sock
+      USER=djackets
+      GROUP=webapps
+      NUM_WORKERS=3
+      DJANGO_SETTINGS_MODULE=djackets_django.setting_production
+      DJANGO_WSGI_MODULE=djackets_django.wsgi
+      TIMEOUT=120
+
+      cd $DJANGODIR
+      source ../env/bin/activate
+      export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
+      export PYTHONPATH=$DJANGODIR:$PYTHONPATH
+
+      RUNDIR=$(dirname $SOCKFILE)
+      test -d $RUNDIR || mkdir -p $RUNDIR
+
+      exec ../env/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
+      --name $NAME \
+      --workers $NUM_WORKERS \
+      --timeout $TIMEOUT \
+      --user=$USER --group=$GROUP \
+      --bind=unix:$SOCKFILE \
+      --log-level=debug \
+      --log-file=-
+      `
+
+   1. install supervisor `apt install supervisor`
+   1. then `cd /etc/supervisor/conf.d`
+   1. create file djackets.conf
+   1. create supervisor log at env/logs
+
+1. setup supervisor
+
+   1. use `supervisorctl reread` to read djackets.conf
+   1. then `supervisorctl update` to add djackets.conf
+   1. then `supervisorctl status` to check djackets.conf is working
+
+1. config NGINX
+   1. go to dir `cd /etc/nginx/sites-available`
+   1. create config file `vi apidjackets.codewizz.org`
+   1. go to dir `/etc/nginx/sites-enabled/`
+   1. make symbol link our config `ln -s ../sites-available/apidjackets.codewizz.org .`
+   1. then `service nginx restart`
