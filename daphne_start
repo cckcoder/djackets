@@ -1,0 +1,11 @@
+#!/bin/sh
+
+DJANGODIR=/var/customers/webs/codewiz/djackets/djackets_django
+DJANGO_ASGI_MODULE=djackets_django.asgi
+
+cd $DJANGODIR
+source ../env/bin/activate
+
+exec ../env/bin/daphne ${DJANGO_ASGI_MODULE}:application \
+-b 0.0.0.0 \
+-p 8002
