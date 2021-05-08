@@ -39,8 +39,8 @@
           </div>
         </div>
         <div class="navbar-end">
-          <router-link to="/summer" class="navbar-item">Summer</router-link>
-          <router-link to="/winter" class="navbar-item">Winter</router-link>
+          <router-link to="/django" class="navbar-item">Django</router-link>
+          <router-link to="/flask" class="navbar-item">Flask</router-link>
           <div class="navbar-item">
             <div class="buttons">
             <template v-if="$store.state.isAuthenticated">

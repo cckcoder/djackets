@@ -19,7 +19,9 @@ ALLOWED_HOSTS = [
     '103.22.183.243',
     'grallator.com',
     'dapi.codewizz.org',
-    'djackets.codewizz.org'
+    'djackets.codewizz.org',
+    'http://djackets.codewizz.org',
+    'https://djackets.codewizz.org',
 ]
 
 STRIPE_SECRET_KEY = 'sk_test_51Ih3abLrydoSDKK6eL7oIMhdybtL3hQ27YJGa8Y6kAAupwa0wF6WTQjhtNKNLqdqGUT8RMxkbyKz3igF9JDhsMGj00dQOGVbkd'
@@ -47,7 +49,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://dapi.codewizz.org",
     "http://103.22.183.243:8002",
     "http://grallator.com:8002",
-    "http://djackets.codewizz.org"
+    "http://djackets.codewizz.org",
+    "https://djackets.codewizz.org"
 ]
 
 
