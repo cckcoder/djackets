@@ -39,9 +39,9 @@
           </div>
         </div>
         <div class="navbar-end">
-          <router-link to="/django" class="navbar-item">Django</router-link>
-          <router-link to="/flask" class="navbar-item">Flask</router-link>
           <div class="navbar-item">
+            <CategoryMenu/>
+
             <div class="buttons">
             <template v-if="$store.state.isAuthenticated">
                 <router-link to="/my-account" class="button is-light">My account</router-link>
@@ -77,8 +77,13 @@
 
 <script>
 import axios from 'axios'
+import CategoryMenu from '@/components/CategoryMenu'
 
 export default {
+  name: 'App',
+  components: {
+    CategoryMenu
+  },
   data() {
     return {
       showMobileMenu: false,

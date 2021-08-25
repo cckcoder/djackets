@@ -27,6 +27,7 @@
 <script>
 import axios from 'axios'
 import ProductBox from '@/components/ProductBox'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Home',
@@ -41,12 +42,13 @@ export default {
   mounted() {
     document.title = 'Home | Djackets'
     this.getLatestProducts()
+    this.fetchCategory()
   },
   methods: {
     async getLatestProducts() {
       this.$store.commit('setIsLoading', true)
       await axios
-        .get('/api/v1/latest-products')
+        .get('/api/v1/all-products')
         .then(response => {
           this.latestProducts = response.data
         })
@@ -55,7 +57,8 @@ export default {
         })
 
       this.$store.commit('setIsLoading', false)
-    }
+    },
+    ...mapActions(['fetchCategory'])
   }
 }
 </script>

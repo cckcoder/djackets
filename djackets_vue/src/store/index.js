@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import axios from 'axios'
 
 export default createStore({
   state: {
@@ -54,6 +55,14 @@ export default createStore({
       localStorage.setItem("cart", JSON.stringify(state.cart));
     },
   },
-  actions: {},
+  actions: {
+    async fetchCategory() {
+      await axios
+        .get('/api/v1/category-name')
+        .then(response => {
+          console.log(response.data)
+        })
+    }
+  },
   modules: {},
 });
