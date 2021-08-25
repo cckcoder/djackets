@@ -40,7 +40,7 @@
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
-            <CategoryMenu/>
+            <CategoryMenu :category="category" />
 
             <div class="buttons">
             <template v-if="$store.state.isAuthenticated">
@@ -78,6 +78,7 @@
 <script>
 import axios from 'axios'
 import CategoryMenu from '@/components/CategoryMenu'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'App',
@@ -100,6 +101,7 @@ export default {
   },
   mounted() {
     this.cart = this.$store.state.cart
+    this.fetchCategory()
   },
   methods: {
     initializeToken() {
@@ -110,6 +112,7 @@ export default {
         axios.defaults.headers.common['Authorization'] = ""
       }
     },
+    ...mapActions(['fetchCategory'])
   },
   computed: {
     cartTotalLength() {
@@ -118,7 +121,8 @@ export default {
               totalLength += parseInt(this.cart.items[i].quantity)
           }
           return totalLength
-    }
+    },
+    ...mapState(['category'])
   }
 }
 </script>

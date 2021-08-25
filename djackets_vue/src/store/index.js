@@ -6,6 +6,7 @@ export default createStore({
     cart: {
       items: [],
     },
+    category: [],
     isAuthenticated: false,
     token: "",
     isLoading: false,
@@ -54,13 +55,16 @@ export default createStore({
       state.cart = { items: [] };
       localStorage.setItem("cart", JSON.stringify(state.cart));
     },
+    SET_CATEGORY(state, category) {
+      state.category = category
+    }
   },
   actions: {
-    async fetchCategory() {
+    async fetchCategory({ commit }) {
       await axios
         .get('/api/v1/category-name')
-        .then(response => {
-          console.log(response.data)
+        .then(({ data }) => {
+          commit('SET_CATEGORY', data) 
         })
     }
   },

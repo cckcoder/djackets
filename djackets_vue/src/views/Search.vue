@@ -6,11 +6,13 @@
         <h2 class="is-size-5 has-text-grey">Search term: "{{ query }}"</h2>
       </column>
     </div>
-    <ProductBox
-      v-for="product in products"
-      :key="product.id"
-      :product="product"
-    />
+    <div class="columns">
+      <ProductBox
+        v-for="product in products"
+        :key="product.id"
+        :product="product"
+      />
+    </div>
   </div>
 </template>
 
