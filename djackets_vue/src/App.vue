@@ -71,6 +71,10 @@
 
     <footer class="footer">
       <p class="has-text-centered">Copyright (c) 2021</p>
+      <p class="has-text-centered mt-3">This Project is demostration VueJs and Django REST Framework</p>
+      <p class="has-text-centered mt-3">
+        Power by <a :href="codeWizzUrl" class="has-text-weight-semibold" target="_blank">CodeWizz</a>
+      </p>
     </footer>
   </div>
 </template>
@@ -90,7 +94,8 @@ export default {
       showMobileMenu: false,
       cart: {
         items: []
-      }
+      },
+      codeWizzUrl: 'https://codewizz.org/about/'
     }
   },
   beforeCreate() {

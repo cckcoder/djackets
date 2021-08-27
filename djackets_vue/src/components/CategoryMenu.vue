@@ -1,16 +1,15 @@
 <template>
   <div 
-    @click="toggleCategory"
-    class="dropdown mx-3 category-main"
-    :class="{'is-active': toggle}"
+    class="dropdown mx-3 category-main is-hoverable"
+    :class="{'mb-toggle': mbToggle}"
   >
     <div class="dropdown-trigger">
-      <p aria-haspopup="true" aria-controls="dropdown-menu4">
+      <button  class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
         <span>Category</span>
         <span class="icon is-small">
           <i class="fas fa-angle-down" aria-hidden="true"></i>
         </span>
-      </p>
+      </button>
     </div>
     <div class="dropdown-menu" id="dropdown-menu4" role="menu">
       <div class="dropdown-content">
@@ -42,11 +41,15 @@ export default {
   props: {
     category: Array
   },
+  mounted() {
+    this.screenSizeCheck()
+  },
   data() {
     return {
       menuActive: '',
       isActive: 'is-active',
-      toggle: false
+      toggle: false,
+      mbToggle: false
     }
   },
   methods: {
@@ -58,6 +61,12 @@ export default {
     },
     handleMouseLeave() {
       console.log('handleMouseLeave')
+    },
+    screenSizeCheck() {
+      let windowSize = window.screen.width
+      if (windowSize <= 1023) {
+        this.mbToggle = true
+      }
     }
   }
 }
@@ -66,6 +75,10 @@ export default {
 <style scope>
 a:link .is-active {
   background-color: #3ec46d;
+}
+
+.mb-toggle {
+  margin-bottom: 15px;
 }
 
 .category-main {
